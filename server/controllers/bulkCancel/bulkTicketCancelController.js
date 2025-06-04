@@ -67,7 +67,7 @@ const bulkTicketCancel = async (req, res) => {
         io.to(groupId).emit('getTotalTickets', ticketList.length);
         io.to(groupId).emit('startCancellationProcess');
 
-        const batches = chunkArray(ticketList, 1);
+        const batches = chunkArray(ticketList, 10);
         const allQueuedJobs = [];
 
         for (const batch of batches) {
