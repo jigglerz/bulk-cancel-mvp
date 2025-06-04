@@ -20,13 +20,13 @@ function initApp(app) {
     // Serve static frontend files
     app.use(express.static(path.join(__dirname, 'public')));
 
-    // Handle client-side routing: serve index.html for any non-API routes
-    /*app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'public', 'index.html'));
-    });
-*/
     app.use(notFoundHandler);
     app.use(errorHandler);
+
+    // Fallback only for non-API routes (e.g., for React Router)
+    app.get(/^\/(?!api).*/, (req, res) => {
+      res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    });
 }
 
 module.exports = {
