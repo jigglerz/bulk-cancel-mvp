@@ -17,7 +17,7 @@ function createCancellationWorker({
     queueName,
     connection,
     redisService,
-    concurrency = 5
+    concurrency = 10
 }) {
     return new Worker(queueName, async (job) => {
         if (await job.isCompleted()) {
