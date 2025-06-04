@@ -12,7 +12,7 @@ function initWorker() {
     queueName: process.env.QUEUE_NAME || 'ticketCancellations',
     connection: redisConnection,
     redisService: redisNotifier,
-    concurrency: 5,
+    concurrency: 10,
   });
 
   attachWorkerListeners(worker);
