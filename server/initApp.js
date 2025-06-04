@@ -21,10 +21,10 @@ function initApp(app) {
     app.use(express.static(path.join(__dirname, 'public')));
 
     // Handle client-side routing: serve index.html for any non-API routes
-    app.get('*', (req, res) => {
+    /*app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, 'public', 'index.html'));
     });
-
+*/
     app.use(notFoundHandler);
     app.use(errorHandler);
 }
